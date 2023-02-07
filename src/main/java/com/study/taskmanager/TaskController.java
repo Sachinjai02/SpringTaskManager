@@ -1,17 +1,20 @@
 package com.study.taskmanager;
 
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
-public class TaskController {
+@ControllerAdvice
+public class TaskController extends ResponseEntityExceptionHandler {
     private final List<Task> taskList;
     private AtomicInteger taskId = new AtomicInteger(0);
+
 
     public TaskController() {
         taskList = new ArrayList<>();
@@ -101,5 +104,13 @@ public class TaskController {
             throw new TaskNotFoundException(taskId);
         }
         return taskOptional.get();
+    }
+
+    @ExceptionHandler(TaskNotFoundException.class)
+    public ResponseEntity<Object> handleTaskNotFoundException(TaskNotFoundException ex) {
+        Map<String, String> body = new HashMap<>();
+        body.put("message", ex.getMessage());
+        ResponseEntity errorResponse = new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+        return errorResponse;
     }
 }

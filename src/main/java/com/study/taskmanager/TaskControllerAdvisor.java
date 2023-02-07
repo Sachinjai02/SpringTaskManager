@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class TaskControllerAdvisor extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(TaskNotFoundException.class)
