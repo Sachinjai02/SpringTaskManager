@@ -1,7 +1,7 @@
 # TaskManager with Spring JPA 
 
 
-## Implemtation of following end points
+## Implentation of following end points
 
 ### API Endpoints 
 
