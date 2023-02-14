@@ -3,6 +3,7 @@ package com.study.springtaskmanager.repositories;
 import com.study.springtaskmanager.entities.TaskEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.scheduling.config.Task;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -20,4 +21,7 @@ public interface TasksRepository extends JpaRepository<TaskEntity, Integer> {
     List<TaskEntity> findAllByCompletedAndDueDateBefore(boolean completed, Date dueDate);
 
     List<TaskEntity> findAllByTitleContainingIgnoreCase(String titleFragment);
+
+    List<TaskEntity> findAllByTitleAndAndCompleted(String title, boolean completed);
+    List<TaskEntity> findAllByTitle(String title);
 }
