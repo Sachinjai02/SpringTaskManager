@@ -10,4 +10,5 @@ public class TaskDto {
     private String description;
     private Boolean completed;
     private Date dueDate;
+    private Integer id;
 }

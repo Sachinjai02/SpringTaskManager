@@ -20,6 +20,7 @@ public class TaskDtoUtils {
         return tasks.stream().map(task -> {
             //TODO: simplify this by objectMappers
             TaskDto taskDto = new TaskDto();
+            taskDto.setId(task.getId());
             taskDto.setTitle(task.getTitle());
             taskDto.setDescription(task.getDescription());
             taskDto.setCompleted(task.getCompleted());
